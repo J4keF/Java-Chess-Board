@@ -25,7 +25,6 @@ public class makeBoard extends JFrame{
     public static int[] startRow = {ROOK, KNIGHT, BISHOP, KING, QUEEN, BISHOP, KNIGHT, ROOK};
 
     //Generate is a method that outputs (to the screen) a completed GUI with a 8x8 grid (chessboard) and pieces
-    //Will eventually involve movement of pieces... or another class will handle that I honestly have no idea
     public void generate() throws IOException {
 
         //Creates a new JFrame and gives it a title, exit behaviour, width and height, and keeps it the same size
@@ -54,7 +53,6 @@ public class makeBoard extends JFrame{
                 //Not sure if this does anything but I'd like to think it's the reason they're all the same size (100x100px)
                 tile.setPreferredSize(new Dimension(100, 100));
 
-                //Fancy math I stole from the internet to set the board square colours in a chessboard pattern
                 if ((row % 2 == 1 && col % 2 == 1) || (row % 2 == 0 && col % 2 == 0)) {
                     tile.setBackground(color2);
                 } else {
@@ -73,7 +71,7 @@ public class makeBoard extends JFrame{
 
         //Stores the chessIcons file
         File pieces = new File("/Users/jakefogel/Downloads/IdeaProjects/ComputerSciencePractice/src/Culminating2022/chessIconsFinal.png");
-        //Converts it to a bufferedImage (Like a regular image except it lets you split it up? I should really learn more about that)
+        //Converts it to a bufferedImage
         BufferedImage pieceImagesBuff = ImageIO.read(pieces);
 
         //Loops over the 2x6 array and fills each index with a segment (a single chess piece) from the chessIcons image
@@ -103,13 +101,11 @@ public class makeBoard extends JFrame{
         }
 
 
-        //This is where it gets a bit tricky... This is the latest addition that I was working on vvv
 
         //So I created a new JPanel called overlayoutPanel
         JPanel  overlayoutPanel = new JPanel();
 
-        //Then I create an overlayLayout (just a layout system that tells a panel to put objects over-top each other,-
-        //feel free to look it up, it's pretty confusing)
+        //Then I create an overlayLayout (just a layout system that tells a panel to put objects over-top each other)
         OverlayLayout overlay = new OverlayLayout(overlayoutPanel);
         //Then I set the overlayoutPanel JPanel to the OverlayLayout I created, so now it will follow the rules of-
         //the overlaying layout
